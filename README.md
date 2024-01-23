@@ -3,8 +3,8 @@ Website ini bertujuan untuk user dapat melakukan sebuah post. Pada tahap ini use
 Untuk arsitektur database saya menggunakan default dari laravel breeze namun telah diubah agar dapat melakukan multi authentication
 
 Dependensi yang saya gunakan :
-*laravel breeze
-*daisyUI
+* laravel breeze
+* daisyUI
   
 Untuk menjalankan web ini yangperlu dipersiapkan adalah   
 * melakukan clone pada repository ini
