@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Birdy;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class BirdyController extends Controller
@@ -10,10 +11,17 @@ class BirdyController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+     public function dashboard(): View
+     {
+         return view('dashboard', [
+             'birds' => Birdy::with('user')->latest()->get(),
+         ]);
+     }
+    
+    public function index(): View
     {
-        return view('dashboard', [
-            'birds' => Birdy::latest()->get(),
+        return view('birds.index', [
+            'birds' => Birdy::with('user')->latest()->get(),
         ]);
     }
 

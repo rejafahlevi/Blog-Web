@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
+            {{ __('Birdy') }}
         </h2>
     </x-slot>
 
@@ -14,16 +14,6 @@
             <div class="alert alert-success mb-4">{{ session('error')}}</div>
             @endif
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white shadow-sm rounded-lg text-gray-900 mb-2">
-                    <form action="/birds" class="form-control" method="post">
-                        @csrf
-                        <textarea class=" @error('content') textarea-error @enderror textarea textarea-primary mb-2" cols="30" id="" name="content" placeholder="Whats in your mind...." rows="3"></textarea>
-                        @error('content')
-                        <span>{{ $message }}</span>
-                        @enderror
-                        <input class="btn btn-outline" type="submit" value="Birds">
-                    </form>
-                </div>
 
                 <div class="mt-6 bg-white shadow-sm rounded-lg divide-y">
                     @foreach ($birds as $b )

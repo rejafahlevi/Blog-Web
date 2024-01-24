@@ -20,7 +20,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard',[BirdyController::class, 'index'] )->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/dashboard',[BirdyController::class, 'dashboard'] )->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/birds',[BirdyController::class, 'index'] )->middleware(['auth', 'verified'])->name('birdy.index');
 
 Route::post('/birds', [BirdyController::class, 'store'])->middleware(['auth', 'verified'])->name('birdy.store');
 

@@ -10,6 +10,9 @@ export default {
     ],
 
     theme: {
+        daisyui: {
+            themes: ["light", "dark", "cupcake"],
+          },
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
@@ -17,5 +20,5 @@ export default {
         },
     },
 
-    plugins: [require("daisyui")],
+    plugins: [require ("daisyui")],
 };
