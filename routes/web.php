@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BirdyController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
@@ -36,9 +37,12 @@ Route::put('/birds/{id}', [BirdyController::class, 'update'])->middleware(['auth
 
 Route::delete('/birds/{id}', [BirdyController::class, 'destroy'])->middleware(['auth', 'verified'])->name('birdy.destroy');
 
+
 Route::middleware(['auth','role:admin'])->group(function() {
 
     Route::get('/admin/admin_dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
+    
+    Route::get('/admin/admin_birdy', [AdminController::class, 'AdminBirdy'])->name('admin.birdy');
 
 });
 
@@ -47,6 +51,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
 
 require __DIR__.'/auth.php';
 

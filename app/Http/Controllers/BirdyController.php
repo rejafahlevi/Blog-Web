@@ -19,9 +19,13 @@ class BirdyController extends Controller
      }
     
     public function index(): View
-    {
+    {   
+        //cara pemanggilan yg benar
+
+        $data=Birdy::with('user')->latest()->get();
+        
         return view('birds.index', [
-            'birds' => Birdy::with('user')->latest()->get(),
+            'birds' => $data,
         ]);
     }
 
@@ -74,7 +78,8 @@ class BirdyController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, $id)
-    {
+    {   
+        //ganti menggunakan laravel request
         $this->validate($request, [
             'content' => ['required'],
         ]);
@@ -88,7 +93,7 @@ class BirdyController extends Controller
 
         session()->flash('success', 'Berhasil memperbarui birds');
 
-        return to_route('dashboard');
+        return to_route('birdy.index');
     }
 
     /**

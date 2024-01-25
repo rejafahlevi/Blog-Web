@@ -31,7 +31,6 @@
                     </div>
                     <p class="mt-4 text-lg text-gray-900">{{ $b->content }}</p>
                 </div>
-                @can('access', \App\Http\Controllers\AdminController::class)
                 <div class="card-actions p-4">
                     <a href="{{ route('birdy.edit', $b->id) }}" class="btn btn-warning btn-sm">Edit</a>
                     <form action="{{ route('birdy.destroy', $b->id) }}" method="post">
@@ -40,40 +39,8 @@
                         <input type="submit" class="btn btn-error btn-sm" value="Delete">
                     </form>
                 </div>
-                @else
-                @if ($b->user->is(auth()->user()))
-                <div class="card-actions p-4">
-                    <a href="{{ route('birdy.edit', $b->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                    <form action="{{ route('birdy.destroy', $b->id) }}" method="post">
-                        @csrf
-                        @method("DELETE")
-                        <input type="submit" class="btn btn-error btn-sm" value="Delete">
-                    </form>
-                </div>
-                @endif
-                @endcan
             </div>
             @endforeach
         </div>
     </div>
 </x-app-layout>
-
-<!-- 
-    membuat table baru untuk comment,
-    relasi tabel comment adalah id user dan id birdies
-    like di tabel birdies,
-    like tidak menampilkan user berarti tipe integer
-
-    tabel admin isinya :
-    nama user
-    role user
-    postingan int all
-    like int all
-
-    nampilkan detail data :
-    Nama
-    Email
-    Postingan -> detail berupa content coment dan like
-
-    Menampilkan chart user di role admin
--->

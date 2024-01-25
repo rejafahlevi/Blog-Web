@@ -11,6 +11,9 @@
                 <div class="p-6 text-gray-900">
                     {{ __("Hello Admin!") }}
                 </div>
+                <div class="p-6 text-gray-900">
+                    {{ __("Berikut data user birdy") }}
+                </div>
             </div>
         </div>
     </div>
