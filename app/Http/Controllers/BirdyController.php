@@ -107,6 +107,7 @@ class BirdyController extends Controller
 
         session()->flash('error', 'Berhasil menghapus birds');
 
-        return to_route('dashboard');
+        return back();
+        // return to_route('dashboard');
     }
 }

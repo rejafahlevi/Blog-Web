@@ -7,10 +7,10 @@
 
     <div class="max-w-2xl mx-auto p-4 sm:p-6 lg:px-8">
         @if (session('success'))
-        <div class="alert alert-success mb-4">{{ session('success')}}</div>
+        <div class="alert alert-success mb-4" id="success-message">{{ session('success')}}</div>
         @endif
         @if (session('error'))
-        <div class="alert alert-success mb-4">{{ session('error')}}</div>
+        <div class="alert alert-success mb-4" id="error-message">{{ session('error')}}</div>
         @endif
         <!-- <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg"> -->
         <div class="mt-6 bg-white shadow-sm rounded-lg divide-y">
@@ -56,6 +56,26 @@
             @endforeach
         </div>
     </div>
+    <script>
+        // Fungsi untuk menyembunyikan pesan setelah beberapa detik
+        function hideMessage() {
+            var successMessage = document.getElementById('success-message');
+            var errorMessage = document.getElementById('error-message');
+
+            if (successMessage) {
+                successMessage.style.display = 'none';
+            }
+
+            if (errorMessage) {
+                errorMessage.style.display = 'none';
+            }
+        }
+
+        // Panggil fungsi hideMessage() setelah 3000 milidetik (3 detik)
+        document.addEventListener('DOMContentLoaded', function () {
+            setTimeout(hideMessage, 3000);
+        });
+    </script>
 </x-app-layout>
 
 <!-- 
