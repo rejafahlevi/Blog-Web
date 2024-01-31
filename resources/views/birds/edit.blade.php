@@ -4,24 +4,26 @@
             {{ __('Edit') }}
         </h2>
     </x-slot>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:p-8 sm:rounded-lg">
-            <form action="{{ route('birdy.update', $bird->id) }}" class="form-control" method="post">
+        <div class="max-w-2xl mx-auto p-4 sm:p-6 lg:px-8">
+            <form action="{{ route('birdy.update', $birds->id) }}" class="form-control" method="post">
                 @csrf
                 @method('PUT')
                 <div class="mb-3">
                     <textarea class="@error('content') textarea-error @enderror textarea textarea-bordered w-full" cols="30" id="" name="content" rows="3">
-                    {{ $bird->content}}
+                    {{ $birds->content}}
                     </textarea>
                     @error('content')
                     <span>{{ $message }}</span>
                     @enderror
                 </div>
+                <div class="flex">
                 <div class="mb-3">
-                    <input class="btn btn-outline btn-success" type="submit" value="Edit">
+                    <input class="btn btn-outline" type="submit" value="Save">
+                </div>
+                <div class="mb-3 ml-3">
+                <a href="{{ url()->previous() }}" class="btn btn-outline">Cancel</a>
+                </div>
                 </div>
             </form>
         </div>
-    </div>
 </x-app-layout>

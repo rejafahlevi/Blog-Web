@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Birdy;
+use App\Models\Comments;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
@@ -22,7 +23,7 @@ class BirdyController extends Controller
     {   
         //cara pemanggilan yg benar
 
-        $data=Birdy::with('user')->latest()->get();
+        $data=Birdy::with('user','comments')->latest()->get();
         
         return view('birds.index', [
             'birds' => $data,
@@ -53,15 +54,25 @@ class BirdyController extends Controller
 
         session()->flash('success', 'Berhasil birds');
 
-        return to_route('dashboard');
+        return redirect()->back();
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Birdy $birdy)
+    public function show($id)
     {
-        //
+        $bird = Birdy::with('user')->find($id);
+        $comments = Comments::where('birdies_id', $bird->id)->with('user')->get();
+
+        if (!$bird) {
+            // Optionally, you can redirect or show an error message
+            abort(404, 'Birdy not found');
+        }
+
+        // dd($comments);
+
+        return view('birds.show', compact('bird', 'comments'));
     }
 
     /**
@@ -70,7 +81,7 @@ class BirdyController extends Controller
     public function edit($id)
     {
         return view('birds.edit', [
-            'bird' => Birdy::findOrFail($id),
+            'birds' => Birdy::findOrFail($id),
         ]);
     }
 
