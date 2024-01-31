@@ -63,9 +63,6 @@
                         <x-slot name="content">
                             <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
                                 <li>
-                                    <x-dropdown-link href="{{ route('birdy.edit', $b->id) }}" class="btn btn-warning btn-sm">Edit</x-dropdown-link>
-                                </li>
-                                <li>
                                     <form action="{{ route('birdy.destroy', $b->id) }}" method="post">
                                         @csrf
                                         @method("DELETE")
