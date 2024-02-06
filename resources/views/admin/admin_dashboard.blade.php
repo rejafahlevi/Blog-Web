@@ -14,10 +14,10 @@
                 <div class="p-6 text-gray-900">
                     {{ __("Berikut data user birdy") }}
                 </div>
-                <div class="overflow-x-auto ml-6 mr-6">
-                    <table class="table table-xs">
+                <div class="overflow-x-auto ml-6 mr-6 mb-6">
+                    <table id="myTable" class="display" style="width:100%">
                         <thead>
-                            <tr class="text-center">
+                            <tr>
                                 <th>No</th>
                                 <th>Name</th>
                                 <th>Role</th>
@@ -27,7 +27,7 @@
                         </thead>
                         <tbody>
                             @foreach ($data as $d)
-                            <tr class="text-center hover">
+                            <tr>
                                 <th>{{$d ->id}}</th>
                                 <td>{{$d ->name}}</td>
                                 <td>{{$d ->role}}</td>

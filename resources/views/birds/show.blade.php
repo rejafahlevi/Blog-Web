@@ -1,9 +1,20 @@
 <x-app-layout>
     @if ($bird)
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ $bird->user->name }}'s Birdy
-        </h2>
+        <div class="flex justify-between">
+            <div class="flex space-x-2">
+                <a href="{{ url()->previous() }}" class="flex space-x-6 btn btn-square btn-outline btn-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+                    </svg>
+                </a>
+            </div>
+            <div class="flex-1">
+                <h2 class="font-semibold text-xl text-gray-800 leading-tight ">
+                    {{ $bird->user->name }}'s Birdy
+                </h2>
+            </div>
+        </div>
     </x-slot>
     @else
     <x-slot name="header">

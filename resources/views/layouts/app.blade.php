@@ -12,7 +12,9 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-    <link href="//cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="//cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+    
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -47,6 +49,14 @@
         setTimeout(hideMessage, 2000);
     });
 </script>
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="//code.jquery.com/jquery-3.7.0.js"></script>
+<script src="//cdn.datatables.net/1.13.7/js/dataTables.tailwindcss.min.js"></script>
+<script src="//cdn.tailwindcss.com"></script>
+
+<!-- DataTables -->
 <script src="//cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+<script>
+    let table = new DataTable('#myTable');
+</script>
+
 </html>
