@@ -49,11 +49,10 @@ class RegisteredUserController extends Controller
 
         $url ='';
         if($request->user()->role === 'admin') {
-            $url=route('admin/admin_dahsboard');
+            $url=route('admin.admin_dashboard');
         } elseif($request->user()->role === 'user') {
-            $url=route('/dahsboard');
+            $url=route('dashboard');
         }
-
 
         return redirect()->intended($url);
     }
